@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Temperatura</title>
+</head>
+<body>
+    
+<h1>SENSORES E ESCALA</h1>
+
+<h2>QUAIS OS TIPOS DE SENSORES DE MEDIDA ANALÓGICA?</h2>
+
+<p>Sensores de medida analógica são aqueles que geram um sinal contínuo (não só 0 ou 1), <br>
+normalmente em forma de tensão, corrente ou resistência, <br>
+proporcional ao que está sendo medido. <br> </p>
+
+<p>SENSORES DE TEMPERATURA <br>
+Medem calor/frio. <br>
+Termistor <br>
+Termopar <br>
+RTD (resistência térmica) <br>
+Usados em clima, eletrônica e indústria. <br> </p>
+
+<p>SENSORES DE LUZ <br>
+Detectam intensidade luminosa. <br>
+LDR (resistor dependente de luz) <br>
+Fotodiodo <br>
+Fototransistor <br> </p>
+
+<p>SENSORES DE POSIÇÃO E MOVIMENTO <br>
+Medem deslocamento ou ângulo. <br>
+Potenciômetro <br>
+Encoder analógico <br>
+Sensor de efeito Hall (em alguns casos analógico) <br> </p>
+
+<p>SENSORES DE FORÇA E PRESSÃO   <br>
+Medem peso ou pressão. <br>
+Célula de carga <br>
+ Sensor piezoelétrico <br>
+Sensores de pressão (barômetro, industrial) <br> </p>
+
+<p>SENSORES DE GÁS E AMBIENTE <br> 
+Detectam substâncias no ar. <br>
+Sensores de gás (MQ-2, MQ-135 etc.) <br>
+ Sensores de umidade <br> </p>
+
+<p>SENSORES DE SOM <br>
+Captam ondas sonoras.  <br>
+ Microfone analógico <br> </p>
+
+<p>SENSORES ELÉTRICOS <br>
+ Medem grandezas elétricas. <br>
+Sensor de corrente <br>
+Sensor de tensão <br> </p>
+
+<h2>QUAL A ESCALA ANALÓGICA DO ARDUINO?</h2>
+
+<p>A escala analógica do Arduino é o intervalo de valores que ele usa <br>
+ para representar um sinal analógico quando faz a leitura. <br> </p>
+
+<p>ESCALA PADRÃO <br>
+Na maioria das placas como o Arduino Uno: <br>
+ Vai de 0 a 1023 <br>
+Ou seja, tem 1024 níveis (10 bits)</p> <br>
+
+<p>O QUE ISSO SIGNIFICA? <br>
+O Arduino não lê tensão diretamente em volts — ele converte usando um ADC (conversor analógico-digital). <br>
+Exemplo com 5V: <br>
+ 0 → 0V <br>
+ 1023 → 5V <br>
+512 → ~2,5V <br> </p>
+
+<p>FÓRMULA <br>
+ Para converter o valor lido em tensão: <br>
+Tensão = (valor lido / 1023) * 5 <br> </p>
+
+<p>PINOS ANALÓGICOS <br>
+No Arduino Uno: <br>
+ A0 até A5 são entradas analógicas <br> </p>
+
+<p>OBSERVAÇÃO IMPORTANTE <br> 
+Algumas placas usam 3.3V em vez de 5V <br>
+ Outras placas Arduino têm resolução maior (ex: 12 bits → 0 a 4095) <br> </p>
+
+ <p>RESUMINDO <br>
+Escala padrão: 0 a 1023 <br>
+Representa tensão de 0V até 5V (ou 3.3V) <br>
+Quanto maior o número, maior a tensão <br> </p>
+
+<h2>SENSOR NTC</h2>
+
+<P>O sensor NTC (Negative Temperature Coefficient) é um tipo de termistor, ou seja, um resistor que varia com a temperatura. <br> </P>
+
+<p>O QUE SIGNIFICA NTC?  <br>
+NTC = coeficiente de temperatura negativo <br>
+Isso quer dizer: <br>
+Quando a temperatura aumenta, a resistência diminui <br>
+Quando a temperatura diminui, a resistência aumenta <br> </p>
+
+<p>COMO FUNCIONA <br>
+ O NTC é feito de materiais semicondutores. Quando esquenta: <br>
+Os elétrons se movem mais <br>
+A corrente passa mais fácil <br>
+Resultado: resistência menor <br> </p>
+
+<p>COMPORTAMENTO TIPICO <br>
+Exemplo: <br>
+25°C → 10kΩ <br>
+ 50°C → ~3kΩ <br>
+80°C → ~1kΩ <br>
+ (Números variam conforme o modelo) <br> </p>
+
+<p>UUSO COM ARDUINO <br>
+ No Arduino Uno, ele normalmente é ligado em um divisor de tensão com um resistor. <br>
+ O Arduino lê: <br>
+Valor analógico (0–1023) <br>
+Converte em tensão <br>
+Depois calcula a temperatura <br> </p>
+
+<p>APLICAÇÕES <br>
+Termômetros digitais <br>
+Controle de temperatura (ventoinha, geladeira) <br>
+Eletrônicos (proteção contra superaquecimento) <br>
+Automóveis <br> </p>
+
+<p>CARACTERISTICAS <br>
+Barato  <br>
+Sensível  <br>
+ Não é linear (precisa cálculo) <br></p>
+
+ <p>RESUMINDO <br>
+NTC é um sensor de temperatura <br>
+Maior temperatura = Menor resistência <br>
+Muito usado com microcontroladores <br> </p>
+
+<h2>SENSOR TERMOPAR</h2>
+
+<p>O termopar tipo K é um sensor de temperatura muito usado na indústria por ser resistente, <br>
+ barato e capaz de medir temperaturas muito altas. <br> </p>
+
+ <p>O QUE É TERMOPAR? <br>
+É um sensor formado por dois metais diferentes unidos na ponta. <br>
+ Quando essa junção é aquecida, surge uma pequena tensão elétrica — <br>
+  isso é explicado pelo efeito termoelétrico conhecido como Efeito Seebeck. <br></p>
+
+ <p>TIPO K (MAIS COMUM) <br>
+O tipo K usa dois metais: <br>
+Cromel (liga de níquel + cromo) <br> 
+Alumel (liga de níquel + alumínio)</p> <br>
+
+ <p>FAIXA DE MEDIÇÃO <br>
+Aproximadamente: -200°C até 1260°C <br>
+Por isso é muito usado em: <br>
+Fornos  <br>
+Indústria metalúrgica <br>
+Motores <br>
+Caldeiras <br> </p>
+
+<p>COMO FUNCIONA NA PRÁTICA <br>
+Quanto maior a temperatura → maior a tensão gerada (em milivolts) <br>
+Essa tensão é muito pequena, então precisa de amplificação <br> </p>
+
+<p>USO COM ARDUINO
+ No Arduino Uno, você não liga direto o termopar.  <br>
+ Você precisa de um módulo como: <br>
+ MAX6675 <br>
+ MAX31855 <br>
+    Eles: <br>
+Amplificam o sinal <br>
+Convertem para digital <br>
+Facilitam a leitura <br></p>
+
+<p>VANTAGENS <br>
+Mede temperaturas muito altas <br>
+Resistente <br>
+Resposta rápida <br> </p>
+
+<p>DESVANTAGENS <br>
+Menos preciso que alguns sensores (como RTD) <br>
+Precisa circuito extra <br>
+Pode sofrer interferência <br> </p>
+
+<p>RESUMINDO <br>
+Termopar tipo K = sensor de alta temperatura <br>
+Funciona pelo Efeito Seebeck <br>
+Gera pequena tensão proporcional ao calor <br>
+Precisa módulo para usar com Arduino <br>
+</p>
+
+<h2>QUAIS OS TIPOS DE TERMOPAR</h2>
+
+<p>Existem vários tipos de termopar, cada um com combinação diferente de metais e faixa de temperatura. <br>
+ Eles são padronizados e identificados por letras. Aqui estão os principais: <br> </p>
+
+ <p>TIPO K= Cromel (+) / Alumel (–) <br>
+ 200°C a 1260°C <br>
+ Mais usado, resistente, industrial <br>
+ Recomendável para atmosferas oxidantes ou inertes. <br>
+  Ocasionalmente podem ser usados abaixo de zero grau (-200 a 1260ºC) <br>
+ </p>
+
+ <p>TIPO J= Ferro (+) / Constantan (–) <br>
+-40°C a 750°C <br>
+Utilizados em atmosferas oxidantes, redutoras, inertes e no vácuo. <br>
+ Não devem ser utilizados em atmosferas sulfurosas e não se recomenda <br>
+  o uso em temperaturas abaixo de zero. (-40 a 760ºC) <br>
+ </p>
+
+ <P>TIPO T= Cobre (+) / Constantan (–) <br>
+-200°C a 350°C <br>
+Adequado para atmosferas oxidantes, redutoras, inertes e no vácuo. <br>
+ Adequados para medições de temperaturas abaixo de zero. (-200 a 370ºC) <br>
+ </P>
+
+ <P>TIPO E= Cromel (+) / Constantan (–) <br>
+-200°C a 900°C <br>
+Próprios para atmosferas oxidantes e inertes. Em ambientes redutores ou vácuo, perdem suas características termoelétricas. <br>
+ Adequado para uso em temperaturas abaixo de zero. (-200 a 870ºC) <br>
+ </P>
+
+ <P>TIPO N= Nicrosil (+) / Nisil (–) <br>
+-200°C a 1300°C <br>
+Excelente resistência à oxidação até 1200ºC, curva f.e.m.xTemp., similar ao tipo K, porém, <br>
+ possui menor potência termoelétrica e apresenta maior estabilidade e menor drift tempo. (-200 a 1260ºC) <br>
+ </P>
+
+ <P>TIPO S e R = Platina-ródio (10%) / Platina <br>
+0°C a 1450°C <br>
+Recomendáveis em atmosferas oxidantes ou inertes. <br>
+ Não devem ser usados abaixo de zero grau, no vácuo, <br>
+  em atmosferas redutoras ou com vapores metálicos. (0 a 1600ºC) <br>
+ </P>
+
+ <P>TIPO B= Platina-ródio (30%) / Platina-ródio (6%) <br>
+0°C a 1800°C <br>
+Não devem ser usados abaixo de zero grau, no vácuo, em atmosferas redutoras ou atmosferas com vapores metálicos. <br>
+ Mais adequado para altas temperaturas que os tipos S/R. (600 a 1700ºC) <br>
+ </P>
+
+ <p>EXEMPLO DE MEDIÇÃO - TERMOPAR TIPO K
+    Temperatura (°C) --- Tensão (mV)
+        0 °C     ======     0,000 mV
+        25 °C    ======    ~1,0 mV
+        100 °C    ======   ~4,1 mV
+        200 °C    ======   ~8,1 mV
+        500 °C    ======   ~20,6 mV
+        1000 °C    ======   ~41,3 mV
+ </p>
+
+<h2>COMO SELECIONAR UM SENSOR DE TEMPERATURA</h2>
+<p>Selecionar um sensor de temperatura não é só escolher “o que mede calor” — depende muito do uso. <br>
+Aqui vai um guia prático para te ajudar a decidir com segurança: <br> </p>
+
+<p>DEFINA A FAIXA DE TEMPERATURA <br>
+Primeiro, saiba qual temperatura você precisa medir: <br>
+Até ~150 °C → sensores simples já atendem <br>
+Até ~600 °C → opções industriais comuns <br>
+Acima disso → precisa de sensores especiais <br>
+ Exemplo: <br>
+Baixas temperaturas: termistor ou RTD <br>
+Altas temperaturas: termopar <br> </p>
+
+<p>DETERMINE A PRECISÃO NECESSÁRIA <br>
+Alta precisão (±0,1 °C a ±0,5 °C): <br>
+ → RTD (ex: PT100) <br>
+ Média precisão: <br>
+→ termistor <br>
+Menor precisão, mas robusto: <br>
+ → termopar <br> </p>
+
+ <p>AVALIE O AMBIENTE <br>
+Pergunte-se: <br>
+Tem vibração? <br>
+Tem umidade ou água? <br>
+Tem produtos químicos? <br>
+É ambiente explosivo? <br>
+Exemplo:   <br>
+Ambiente agressivo → termopar (mais resistente) <br>
+Laboratório → RTD ou termistor <br> </p>
+
+<p>TEMPO DE RESPOSTA <br>
+Rápido: termopar, termistor <br>
+ Mais lento: RTD <br>
+Se a temperatura muda rápido (tipo motor), isso importa bastante. <br> </p>
+
+<p>TIPO DE CONTATO <br>
+Contato (encostado ou inserido): <br>
+mais preciso <br>
+Sem contato (infravermelho): <br>
+Para objetos em movimento ou muito quentes <br> </p>
+
+<p>DISTANCIA DO SENSOR AO SISTEMA <br>
+Cabos longos → termopar é melhor <br>
+Sinais sensíveis → RTD precisa de cuidado com ruído <br> </p>
+
+<p>CUSTO <br>
+Baixo: termopar tipo J/K <br>
+ Médio: termistor <br>
+Alto: RTD e sensores infravermelhos <br> </p>
+
+<p>EXEMPLOS PRÁTICOS <br>
+🔥 Forno industrial → termopar tipo K <br>
+❄️ Geladeira → termistor <br>
+🧪 Laboratório → RTD (PT100) <br>
+⚙️ Motor → termopar <br>
+📦 Medição sem contato → sensor infravermelho <br> </p>
+
+<h2>SENSOR ULTRASSONICO</h2>
+
+<p>Um sensor ultrassônico é um dispositivo que mede distância ou presença de objetos usando ondas sonoras <br>
+ de alta frequência, normalmente acima de 20 kHz (infrassom para humanos). <br></p>
+ <img src="./ultrassonico.jpeg" , width="500", height="500" , alt="Foto">
+
+<h2>SENSOR DE COR</h2>
+
+<p>Um sensor de cor é um dispositivo que detecta ou identifica a cor de um objeto <br>
+ convertendo a luz refletida em sinais elétricos que podem ser processados por um microcontrolador ou CLP. <br></p>
+ <img src="./sensordecor.jpeg" , width="500", height="500" , alt="Foto">
+
+
+<h2>SENSOR DE VIBRAÇÃO</h2>
+
+<p>Um sensor de vibração é um dispositivo que detecta movimentos vibratórios ou choques mecânicos em máquinas, estruturas ou objetos. <br>
+ Ele converte a vibração em um sinal elétrico que pode ser lido por microcontroladores, CLPs ou sistemas de monitoramento. <br> </p>
+ <img src="./sensordevibrar.jpeg" , width="500", height="500" , alt="Foto">
+
+
+<h2>SENSOR LDR (LUZ)</h2>
+
+<p>Um sensor LDR (Light Dependent Resistor) é um dispositivo que varia sua resistência <br>
+ elétrica de acordo com a intensidade da luz que incide sobre ele. <br>
+ Ele é muito usado para detectar luz ou escuro em aplicações simples de automação. <br> </p>
+ <img src="./LDR.jpeg" , width="500", height="500" , alt="Foto">
+
+
+<h2>SENSOR NTC/PTC</h2>
+
+<p>Um sensor NTC/PTC é um tipo de termistor, ou seja, um resistor cuja resistência elétrica varia com a temperatura. <br>
+ Esses sensores são muito usados para medir temperatura ou proteger circuitos elétricos. <br></p>
+ <img src="./PTC-NTC.jpg" , width="500", height="500" , alt="Foto">
+
+
+<h2>ATUADOR RELÉ</h2>
+
+<p>Um atuador relé é um dispositivo eletromecânico usado para acionar ou controlar <br>
+ outros dispositivos elétricos através de um sinal de baixa potência. <br>
+ Ele funciona como um interruptor controlado eletricamente, permitindo ligar ou desligar <br>
+ cargas maiores sem contato direto com o circuito de controle. <br> </p>
+ <img src="./atuadorrele.jpeg" , width="500", height="500" , alt="Foto">
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
